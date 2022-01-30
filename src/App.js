@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./Navbar";
+import Locations from "./Locations";
+import { useState, useEffect } from "react";
+
+// const formatCharacters = (characters) =>{
+//   const residents = {}
+//   characters.forEach(
+//     resident => {
+//       residents[resident.id] = resident
+//     }
+//   )
+//   return residents
+// }
 
 function App() {
+  const [locations, setLocations] = useState([]);
+  // const [characters, setCharacters] = useState({});
+
+  // useEffect(() => {
+  //   fetch("https://rickandmortyapi.com/api/character")
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       setCharacters(formatCharacters(data.results));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  useEffect(() => {
+    fetch("https://rickandmortyapi.com/api/location")
+      .then((r) => r.json())
+      .then((data) => {
+        setLocations(data.results);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      {locations && <Locations locations={locations} 
+      // characters={characters}
+      />}
     </div>
   );
 }
