@@ -33,10 +33,8 @@ const Locations = ({ locations, characters }) => {
               <div>{location.type}</div>
               <div>{location.dimension}</div>
               <div>
-                {/* <Characters/> */}
                 {location.residents.map((res)=>{
-                  // console.log(res)
-            
+
                   return (<Characters residents={res}/>)
                   // const resId = res.match(/\d+/)[0]
                   // const char = characters[resId]
