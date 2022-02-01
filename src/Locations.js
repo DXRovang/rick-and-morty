@@ -1,4 +1,5 @@
 import Characters from "./Characters";
+import { useState, useEffect } from "react";
 
 const Locations = ({ locations, characters }) => {
 
@@ -15,14 +16,17 @@ const Locations = ({ locations, characters }) => {
   // const [characters, setCharacters] = useState({});
 
 
-  // useEffect(() => {
-  //   fetch("https://rickandmortyapi.com/api/character")
-  //     .then((r) => r.json())
-  //     .then((data) => {
-  //       setCharacters(formatCharacters(data.results));
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+        console.log(data.info["next"])
+
+        // setCharacters(formatCharacters(data.results));
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
